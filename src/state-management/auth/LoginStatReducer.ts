@@ -1,4 +1,5 @@
-import { use } from "react"
+import type { Dispatch } from "react"
+import React from "react"
 
 export interface LOGIN{
     type:'LOGIN' 
@@ -16,3 +17,10 @@ if (action.type==='LOGOUT') return ''
 return state
 }
 export default LoginStatReducer
+
+interface LoginContextType{
+    user: string
+    dispatch:Dispatch<LoginAction>
+}
+
+export const LoginContext =React.createContext<LoginContextType>({} as LoginContextType)
