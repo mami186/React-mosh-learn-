@@ -1,16 +1,14 @@
-import { useContext } from "react";
-import { LoginContext } from "./LoginStatReducer";
+import useLoginStoere from "./store";
 
 const LoginStatus = () => {
 
-  const {user, dispatch}=useContext(LoginContext)
-
+  const {LogIn, LogOut,user}=useLoginStoere()
   if (user)
     return (
       <>
         <div>
           <span className="mx-2">{user}</span>
-          <a onClick={() => dispatch({type:'LOGOUT'})} href="#">
+          <a onClick={() => LogOut()} href="#">
             Logout
           </a>
         </div>
@@ -18,7 +16,7 @@ const LoginStatus = () => {
     );
   return (
     <div>
-      <a onClick={() => dispatch({username:'mosh.hamedani' ,type:'LOGIN'})} href="#">
+      <a onClick={() => LogIn('mosh.hamedani')} href="#">
         Login
       </a>
     </div>

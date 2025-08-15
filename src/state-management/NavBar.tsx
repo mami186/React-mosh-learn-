@@ -1,16 +1,15 @@
-import { useContext } from 'react';
-import {LoginStatus} from './auth/index';
-import { TaskContext } from './tasks/TasksReducer';
-import { LoginContext } from './auth/LoginStatReducer';
+import useCounterStore from './counter/Store';
+import useLoginStoere from './auth/store';
+import LoginStatus from './auth/LoginStatus';
 
 const NavBar = () => {
-  const {tasks}=useContext(TaskContext)
-  const {user}= useContext(LoginContext)
-
+const {user}=useLoginStoere()
+  const counter=useCounterStore(s=>s.counter)
+  console.log('something')
   return (
     <nav className="navbar d-flex justify-content-between">
       <div>User:{user}</div>
-      <span className="badge text-bg-secondary">{tasks.length}</span>
+      <span className="badge text-bg-secondary">{counter}</span>
       <LoginStatus />  
     </nav>
   );
