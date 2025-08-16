@@ -6,13 +6,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css'
 import App from './App.tsx'
+import { RouterProvider } from 'react-router-dom';
+import router from './routing/rout.tsx';
 
 const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient} >
-    <App />
+      <RouterProvider router={router}></RouterProvider>
+  
     <ReactQueryDevtools/>
     </QueryClientProvider>
 
